@@ -165,6 +165,62 @@ h2 {
   transition: left 0.18s ease, top 0.18s ease;
 }
 
+.plan-box {
+  background: linear-gradient(135deg, #fff3f6, #ffe3ea);
+  border: 2px dashed var(--pink-1);
+  border-radius: 16px;
+  padding: 18px;
+  margin: 16px 0;
+}
+
+.plan-name {
+  display: block;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.plan-price {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--red-1);
+  margin-bottom: 12px;
+}
+
+.plan-price small {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #7a5668;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  font-size: 0.85rem;
+  color: #7a5668;
+  display: grid;
+  gap: 6px;
+}
+
+.btn-premium {
+  margin-top: 6px;
+  background: linear-gradient(135deg, #ffd166, #ff9a3c);
+  color: #5a3600;
+  box-shadow: 0 8px 20px rgba(255, 159, 60, 0.4);
+}
+
+.btn-premium:disabled {
+  cursor: wait;
+  opacity: 0.85;
+}
+
+.paywall-reveal h2 {
+  margin-top: 6px;
+}
+
 .btn-whatsapp {
   display: block;
   margin: 20px auto 0;

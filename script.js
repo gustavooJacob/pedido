@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupQuestionScreen();
   setupCalendar();
   setupOptions();
+  setupPaywall();
   setupShare();
   setupRestart();
 });
@@ -313,9 +314,43 @@ function selectOption(opt, cardEl) {
   state.selectedOption = opt;
 
   setTimeout(() => {
-    showFinalScreen();
-    showScreen("screen-final");
+    showScreen("screen-paywall");
   }, 450);
+}
+
+/* ======================================================
+   Tela 3.5: Brincadeira do "Plano Premium"
+   ====================================================== */
+function setupPaywall() {
+  const btn = document.getElementById("btnPremium");
+  const offer = document.getElementById("paywallOffer");
+  const reveal = document.getElementById("paywallReveal");
+
+  btn.addEventListener("click", () => {
+    btn.disabled = true;
+    btn.textContent = "Processando pagamento... ⏳";
+
+    setTimeout(() => {
+      offer.hidden = true;
+      reveal.hidden = false;
+
+      setTimeout(() => {
+        showFinalScreen();
+        showScreen("screen-final");
+      }, 1800);
+    }, 1400);
+  });
+}
+
+function resetPaywall() {
+  const btn = document.getElementById("btnPremium");
+  const offer = document.getElementById("paywallOffer");
+  const reveal = document.getElementById("paywallReveal");
+
+  btn.disabled = false;
+  btn.textContent = "Assinar agora 💳";
+  offer.hidden = false;
+  reveal.hidden = true;
 }
 
 /* ======================================================
@@ -386,6 +421,7 @@ function setupRestart() {
     document.getElementById("btnYes").style.transform = "";
 
     document.querySelectorAll(".option-card.selected").forEach((c) => c.classList.remove("selected"));
+    resetPaywall();
 
     renderCalendar();
     showScreen("screen-question");
