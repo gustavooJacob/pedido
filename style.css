@@ -153,8 +153,9 @@ h2 {
 }
 
 .btn-no {
-  background: #f1f1f1;
-  color: #666;
+  background: linear-gradient(135deg, #ff6b6b, #e63946);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
   position: relative;
 }
 
