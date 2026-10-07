@@ -1,0 +1,348 @@
+:root {
+  --pink-1: #ff6f91;
+  --pink-2: #ff9a9e;
+  --red-1: #ff4d6d;
+  --text-dark: #4a2436;
+  --card-bg: rgba(255, 255, 255, 0.92);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  color: var(--text-dark);
+  background: linear-gradient(135deg, var(--pink-2), var(--red-1));
+  overflow-x: hidden;
+}
+
+/* ---------- Floating hearts background ---------- */
+.hearts-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hearts-bg span {
+  position: absolute;
+  bottom: -10%;
+  font-size: 1.5rem;
+  opacity: 0.55;
+  animation: floatUp linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(20px) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+/* ---------- App / Screens ---------- */
+.app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  max-width: 480px;
+  animation: fadeIn 0.5s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 36px 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 6vw, 2.1rem);
+  margin: 0 0 8px;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: clamp(1.25rem, 5vw, 1.6rem);
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.subtitle {
+  color: #7a5668;
+  margin: 0 0 20px;
+  font-size: 0.98rem;
+}
+
+.tease {
+  min-height: 1.4em;
+  font-size: 0.95rem;
+  color: var(--red-1);
+  font-weight: 600;
+  margin-bottom: 18px;
+  transition: opacity 0.2s ease;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.button-row {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  min-height: 70px;
+  flex-wrap: wrap;
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, #4fdc8c, #22c55e);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+}
+
+.btn-yes:hover {
+  box-shadow: 0 10px 26px rgba(34, 197, 94, 0.55);
+}
+
+.btn-no {
+  background: #f1f1f1;
+  color: #666;
+  position: relative;
+}
+
+/* when fleeing, the button becomes fixed-positioned via JS */
+.btn-no.fleeing {
+  position: fixed;
+  z-index: 50;
+  transition: left 0.18s ease, top 0.18s ease;
+}
+
+.btn-whatsapp {
+  display: block;
+  margin: 20px auto 0;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp:hover {
+  box-shadow: 0 10px 26px rgba(37, 211, 102, 0.55);
+}
+
+.btn-restart {
+  display: block;
+  margin: 16px auto 0;
+  background: transparent;
+  color: #a9607c;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: none;
+  padding: 6px 12px;
+}
+
+/* ---------- Calendar ---------- */
+.calendar {
+  margin-top: 8px;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+}
+
+.cal-nav {
+  background: var(--pink-1);
+  color: #fff;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.cal-nav:disabled {
+  background: #e3c3cd;
+  cursor: not-allowed;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 0.78rem;
+  color: #a9607c;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cal-day {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: #fdeef1;
+  color: var(--text-dark);
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.cal-day:hover {
+  background: var(--pink-1);
+  color: #fff;
+}
+
+.cal-day.empty {
+  visibility: hidden;
+  cursor: default;
+}
+
+.cal-day.disabled {
+  background: transparent;
+  color: #ddc3cb;
+  cursor: not-allowed;
+}
+
+.cal-day.disabled:hover {
+  background: transparent;
+  color: #ddc3cb;
+}
+
+.cal-day.selected {
+  background: var(--red-1);
+  color: #fff;
+  transform: scale(1.12);
+}
+
+/* ---------- Options grid (date type) ---------- */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.option-card {
+  background: #fdeef1;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 16px 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.option-card:hover {
+  border-color: var(--pink-1);
+  transform: translateY(-2px);
+}
+
+.option-card.selected {
+  background: var(--red-1);
+  color: #fff;
+  border-color: var(--red-1);
+  transform: scale(1.03);
+}
+
+.option-emoji {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.option-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ---------- Final screen ---------- */
+.summary {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 10px 0 4px;
+}
+
+.final-message {
+  color: #7a5668;
+  margin-top: 10px;
+  font-size: 0.98rem;
+}
+
+/* ---------- Confetti canvas ---------- */
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+@media (max-width: 380px) {
+  .card {
+    padding: 28px 18px;
+  }
+  .options-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

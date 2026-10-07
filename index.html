@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Um pedido especial</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="hearts-bg" id="heartsBg" aria-hidden="true"></div>
+
+  <main class="app">
+
+    <!-- Tela 1: Pergunta -->
+    <section class="screen active" id="screen-question">
+      <div class="card">
+        <h1 id="questionTitle">Carregando...</h1>
+        <p class="subtitle" id="questionSubtitle"></p>
+        <div class="tease" id="teaseText"></div>
+        <div class="button-row">
+          <button class="btn btn-yes" id="btnYes">Sim! 💖</button>
+          <button class="btn btn-no" id="btnNo">Não</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tela 2: Calendário -->
+    <section class="screen" id="screen-calendar">
+      <div class="card">
+        <h2>Que dia fica bom pra você? 📅</h2>
+        <p class="subtitle">Escolhe uma data pra gente se ver</p>
+        <div class="calendar">
+          <div class="calendar-header">
+            <button class="cal-nav" id="prevMonth" aria-label="Mês anterior">‹</button>
+            <span id="calMonthLabel"></span>
+            <button class="cal-nav" id="nextMonth" aria-label="Próximo mês">›</button>
+          </div>
+          <div class="calendar-weekdays" id="calWeekdays"></div>
+          <div class="calendar-grid" id="calGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tela 3: Tipo de date -->
+    <section class="screen" id="screen-type">
+      <div class="card">
+        <h2>E que tipo de date você quer? 😍</h2>
+        <p class="subtitle">Escolhe uma opção</p>
+        <div class="options-grid" id="optionsGrid"></div>
+      </div>
+    </section>
+
+    <!-- Tela 4: Final -->
+    <section class="screen" id="screen-final">
+      <div class="card">
+        <h1>Combinado! 🎉💕</h1>
+        <p class="summary" id="summaryText"></p>
+        <p class="final-message" id="finalMessage"></p>
+        <button class="btn btn-whatsapp" id="btnShare">Compartilhar no WhatsApp 📲</button>
+        <button class="btn btn-restart" id="btnRestart">Recomeçar</button>
+      </div>
+    </section>
+
+  </main>
+
+  <canvas id="confettiCanvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
